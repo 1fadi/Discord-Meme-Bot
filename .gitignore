@@ -1,0 +1,8 @@
+# byte compiled files
+__pycache__/
+
+# virtual enviroments
+env/
+
+# here I saved my token, client id, etc..
+test.json
