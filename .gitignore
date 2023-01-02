@@ -5,4 +5,4 @@ __pycache__/
 env/
 
 # here I saved my token, client id, etc..
-test.json
+.env*
