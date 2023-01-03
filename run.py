@@ -11,9 +11,11 @@ def main():
     if os.path.exists(dotenv_path):
         load_dotenv(dotenv_path)
 
-    user_agent = RedditScraper(client_id=os.getenv('REDDIT_CLIENT_ID'), 
-                    client_secret=os.getenv("REDDIT_CLIENT_SECRET"), 
-                    user_agent=os.getenv('REDDIT_USER_AGENT'))
+    user_agent = RedditScraper(
+        client_id=os.getenv('REDDIT_CLIENT_ID'),
+        client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
+        user_agent=os.getenv('REDDIT_USER_AGENT')
+    )
     client = DiscordBot(
         intents=discord.Intents.all(),
         reddit=user_agent
