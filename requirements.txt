@@ -1,3 +1,4 @@
 discord.py==2.1.0
 praw==7.6.1
 prawcore==2.3.0
+python-dotenv==0.21.0
