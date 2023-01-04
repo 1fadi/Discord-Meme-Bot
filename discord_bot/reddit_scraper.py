@@ -1,9 +1,5 @@
 from praw import Reddit
-from prawcore.exceptions import(
-    Redirect as RedirectException,
-    RequestException,
-    ResponseException
-)
+from prawcore.exceptions import Redirect as RedirectException
 import os
 import random
 
@@ -18,7 +14,9 @@ class RedditScraper(Reddit):
         try:
             while True:
                 post = random.choice(posts)
-                if post.score >= os.environ.get('REDDIT_POST_MIN_UPVOTES', 1000):
+                if post.score >= os.environ.get(
+                    'REDDIT_POST_MIN_UPVOTES', 1000
+                ):
                     break
         except IndexError:
             return "subreddit doesn't have any post."
@@ -40,6 +38,6 @@ class RedditScraper(Reddit):
 if __name__ == "__main__":  # test
     user_agent = RedditScraper(
         client_id=os.environ.get('REDDIT_CLIENT_ID', ''),
-        client_secret=os.environ.get('REDDIT_CLIENT_SECRET', ''), 
+        client_secret=os.environ.get('REDDIT_CLIENT_SECRET', ''),
         user_agent=os.environ.get('REDDIT_USER_AGENT', ''))
     print(user_agent.generate_meme("memes"))
