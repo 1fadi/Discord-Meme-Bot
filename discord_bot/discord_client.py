@@ -8,14 +8,14 @@ class DiscordBot(discord.Client):
         self._reddit = reddit
 
     async def on_ready(self):
-        print(f"Bot has logged in as {client.user}.")
+        print(f"Bot has logged in as {self.user}.")
 
     async def on_message(self, message):
         username = str(message.author).split('#')[0]
         msg = str(message.content)
         print(f"<{message.channel.name}> {username}: {msg}")
 
-        if message.author == client.user:  # ignore self-reply
+        if message.author == self.user:  # ignore self-reply
             return
         
         if message.channel.name == "memes":
@@ -33,5 +33,8 @@ class DiscordBot(discord.Client):
                 await message.channel.send("How to use:\n!m <subreddit-name>")
 
         if msg.lower() == "hello":
-            await message.channel.send(f"Hello {username} :)\nwanna see a meme?")
+            await message.channel.send(
+                f"Hello {username} :)\
+                \nwanna see a meme? Head up to memes channel!"
+            )
             return
