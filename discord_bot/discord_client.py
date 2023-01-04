@@ -17,7 +17,7 @@ class DiscordBot(discord.Client):
 
         if message.author == self.user:  # ignore self-reply
             return
-        
+
         if message.channel.name == "memes":
             if msg[0:2] == "!m":
                 try:
