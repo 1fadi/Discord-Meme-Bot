@@ -7,6 +7,8 @@ import random
 class RedditScraper(Reddit):
 
     def generate_meme(self, subreddit):
+        """Main method of RedditScraper. returns a post title and url.
+        """
         subreddit = self._check_subreddit(subreddit)
         if not subreddit:
             return "Subreddit not found. 404"
@@ -25,18 +27,21 @@ class RedditScraper(Reddit):
         return f"{post.title}\n{post.url}"
 
     def _check_subreddit(self, subreddit):
+        """Check if subreddit exists."""
         subreddit = self.subreddit(subreddit)
         try:
-            subreddit.title  # test to see if subreddit exists
+            subreddit.title
         except RedirectException:
             return False
         else:
             return subreddit
 
     def _sort_posts(self, subreddit):
+        """Sort posts by hot."""
         return list(subreddit.hot())
 
     def _sfw_subrreddit(self, subreddit):
+        """verifies if a subreddit is safe for work."""
         return subreddit.over18 is False
 
 
